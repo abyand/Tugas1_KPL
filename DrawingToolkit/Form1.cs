@@ -17,6 +17,8 @@ namespace DrawingToolkit
         private readonly int RECTANGLE = 1;
         private readonly int CIRCLE = 2;
         private readonly int LINE = 3;
+
+
         private readonly int OPACITY = 4;
 
         private int typeShape;
@@ -80,23 +82,29 @@ namespace DrawingToolkit
             }
         }
 
-        private void panel1_MouseMove(object sender, MouseEventArgs e)
+        private void Panel1_MouseMove(object sender, MouseEventArgs e)
         {
-            if(typeShape == LINE)
+           
+            if (canPaint)
             {
-
+                DrawAllShape();
+                if (typeShape == LINE)
+                {
+                    DrawLine(new Shape(LINE, startPoint, e.Location, vector, angle));
+                }
+                else if (typeShape == RECTANGLE)
+                {
+                    DrawRectangle(new Shape(RECTANGLE, startPoint, e.Location, vector, angle));
+                }
+                else if (typeShape == CIRCLE)
+                {
+                    DrawCircle(new Shape(CIRCLE, startPoint, e.Location, vector, angle));
+                }
             }
-            else if(typeShape == RECTANGLE)
-            {
-
-            }
-            else if(typeShape == CIRCLE)
-            {
-
-            }
+            
         }
 
-        private void panel1_MouseUp(object sender, MouseEventArgs e)
+        private void Panel1_MouseUp(object sender, MouseEventArgs e)
         {
             if (canPaint)
             {
@@ -113,15 +121,10 @@ namespace DrawingToolkit
         private void DrawAllShape()
         {
 
-            
+            this.Refresh();
             foreach (Shape shape in listShape)
             {
-                Debug.WriteLine("ini tanda baris");
-                Debug.WriteLine(shape.GetStartPoint().X);
-                Debug.WriteLine(shape.GetStartPoint().Y);
-                Debug.WriteLine(shape.GetEndPoint().X);
-                Debug.WriteLine(shape.GetEndPoint().Y);
-                Debug.WriteLine(shape.getShapeType());
+                
                 if (shape.getShapeType() == LINE)
                 {
                     DrawLine(shape);
@@ -159,13 +162,24 @@ namespace DrawingToolkit
         {
             graphics.DrawLine(pen, shape.GetStartPoint(), shape.GetEndPoint());
         }
-
+        
         private void ResetType()
         {
             typeShape = 0;
             lineToolStripMenuItem.BackColor = Color.White;
             rectangleToolStripMenuItem.BackColor = Color.White;
             circleToolStripMenuItem.BackColor = Color.White;
+        }
+
+        private void UndoDrawing()
+        {
+            listShape.RemoveAt(listShape.Count - 1);
+        }
+
+        private void undoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            UndoDrawing();
+            DrawAllShape();
         }
     }
 }
