@@ -45,5 +45,15 @@ namespace DrawingToolkit
             return this.angle;
         }
 
+        public void SetStartPoint(Point p)
+        {
+            this.startPoint = p;
+        }
+
+        public void SetEndPoint(Point p)
+        {
+            this.endPoint = p;
+        }
+
     }
 }

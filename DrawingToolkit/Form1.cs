@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Collections;
 using System.Diagnostics;
+using System.Drawing.Drawing2D;
 
 namespace DrawingToolkit
 {
@@ -32,6 +33,8 @@ namespace DrawingToolkit
         private Graphics graphics;
         private bool isPaint = false;
         private bool canPaint = false;
+        private bool isDrag = false;
+
 
         private double vector = 0;
         private double angle = 0;
@@ -71,7 +74,7 @@ namespace DrawingToolkit
             isPaint = true;
         }
 
-        private void panel1_MouseDown(object sender, MouseEventArgs e)
+        private void Panel1_MouseDown(object sender, MouseEventArgs e)
         {
             Debug.WriteLine("Send to debug output2.");
             if (e.Button == MouseButtons.Left && isPaint)
@@ -80,6 +83,13 @@ namespace DrawingToolkit
                 Debug.WriteLine("Send to debug output.");
                 canPaint = true;
             }
+            else if (e.Button == MouseButtons.Left && isDrag)
+            {
+                startPoint = e.Location;
+                Debug.WriteLine("Send to debug output.");
+
+            }
+
         }
 
         private void Panel1_MouseMove(object sender, MouseEventArgs e)
@@ -87,7 +97,7 @@ namespace DrawingToolkit
            
             if (canPaint)
             {
-                DrawAllShape();
+                this.Refresh();
                 if (typeShape == LINE)
                 {
                     DrawLine(new Shape(LINE, startPoint, e.Location, vector, angle));
@@ -101,6 +111,7 @@ namespace DrawingToolkit
                     DrawCircle(new Shape(CIRCLE, startPoint, e.Location, vector, angle));
                 }
             }
+
             
         }
 
@@ -110,12 +121,91 @@ namespace DrawingToolkit
             {
                 endPoint = new Point(e.X, e.Y);
                 listShape.Add(new Shape(typeShape, startPoint, endPoint, vector, angle));
-                Debug.WriteLine(listShape.Count);
                 canPaint = false;
                 DrawAllShape();
             }
+            else if (isDrag)
+            {
+                endPoint = new Point(e.X, e.Y);
+                DragShape();
+            }
             
 
+        }
+
+        private void DragShape()
+        {
+            foreach (Shape shape in listShape)
+            {
+               
+                if(shape.getShapeType() == LINE)
+                {
+                    if(IsInLine(shape))
+                    {
+                        Point temp = new Point(endPoint.X - startPoint.X, endPoint.Y - startPoint.Y);
+                        shape.SetStartPoint(new Point(shape.GetStartPoint().X + temp.X, shape.GetStartPoint().Y + temp.Y));
+                        shape.SetEndPoint(new Point(shape.GetEndPoint().X + temp.X, shape.GetEndPoint().Y + temp.Y));
+                        break;
+                    }
+                }
+                else if (shape.getShapeType() == RECTANGLE)
+                {
+                    if (IsInRectangle(shape))
+                    {
+                        Point temp = new Point(endPoint.X - startPoint.X, endPoint.Y - startPoint.Y);
+                        shape.SetStartPoint(new Point(shape.GetStartPoint().X + temp.X, shape.GetStartPoint().Y + temp.Y));
+                        shape.SetEndPoint(new Point(shape.GetEndPoint().X + temp.X, shape.GetEndPoint().Y + temp.Y));
+                        break;
+                    }
+                }
+                else if (shape.getShapeType() == CIRCLE)
+                {
+                    if (IsInCircle(shape))
+                    {
+                        Point temp = new Point(endPoint.X - startPoint.X, endPoint.Y - startPoint.Y);
+                        shape.SetStartPoint(new Point(shape.GetStartPoint().X + temp.X, shape.GetStartPoint().Y + temp.Y));
+                        shape.SetEndPoint(new Point(shape.GetEndPoint().X + temp.X, shape.GetEndPoint().Y + temp.Y));
+                        break;
+                    }
+                }
+            }
+            DrawAllShape();
+
+        }
+
+        private bool IsInCircle(Shape shape)
+        {
+
+            Rectangle rectangle = new Rectangle(Math.Min(shape.GetStartPoint().X, shape.GetEndPoint().X),
+                       Math.Min(shape.GetStartPoint().Y, shape.GetEndPoint().Y),
+                       Math.Abs(shape.GetStartPoint().X - shape.GetEndPoint().X),
+                       Math.Abs(shape.GetStartPoint().Y - shape.GetEndPoint().Y));
+            GraphicsPath myPath = new GraphicsPath();
+            myPath.AddEllipse(rectangle);
+
+            return myPath.IsVisible(startPoint);
+        }
+
+        private bool IsInRectangle(Shape shape)
+        {
+            Rectangle rectangle = new Rectangle(Math.Min(shape.GetStartPoint().X, shape.GetEndPoint().X),
+                       Math.Min(shape.GetStartPoint().Y, shape.GetEndPoint().Y),
+                       Math.Abs(shape.GetStartPoint().X - shape.GetEndPoint().X),
+                       Math.Abs(shape.GetStartPoint().Y - shape.GetEndPoint().Y));
+            GraphicsPath myPath = new GraphicsPath();
+            myPath.AddRectangle(rectangle);
+
+            return myPath.IsVisible(startPoint);
+        }
+
+        private bool IsInLine(Shape shape)
+        {
+
+            var path = new GraphicsPath();
+            path.AddLine(shape.GetStartPoint(), shape.GetEndPoint());
+            bool result = false;
+            result = path.IsOutlineVisible(startPoint, pen);
+            return result;
         }
 
         private void DrawAllShape()
@@ -124,7 +214,7 @@ namespace DrawingToolkit
             this.Refresh();
             foreach (Shape shape in listShape)
             {
-                
+            
                 if (shape.getShapeType() == LINE)
                 {
                     DrawLine(shape);
@@ -161,14 +251,18 @@ namespace DrawingToolkit
         private void DrawLine(Shape shape)
         {
             graphics.DrawLine(pen, shape.GetStartPoint(), shape.GetEndPoint());
+            this.Invalidate();
         }
         
         private void ResetType()
         {
             typeShape = 0;
+            isDrag = false;
+            isPaint = false;
             lineToolStripMenuItem.BackColor = Color.White;
             rectangleToolStripMenuItem.BackColor = Color.White;
             circleToolStripMenuItem.BackColor = Color.White;
+            moveToolStripMenuItem.BackColor = Color.White;
         }
 
         private void UndoDrawing()
@@ -181,5 +275,14 @@ namespace DrawingToolkit
             UndoDrawing();
             DrawAllShape();
         }
+
+        private void moveToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ResetType();
+            moveToolStripMenuItem.BackColor = Color.Violet;
+            isDrag = true;
+        }
+
+       
     }
 }
