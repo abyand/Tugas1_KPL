@@ -4,3 +4,9 @@ E:\Kuliah\Semester 7\KPL\FP\ricesky\diagram-toolkit\src\DiagramToolkit\DiagramTo
 E:\Kuliah\Semester 7\KPL\FP\ricesky\diagram-toolkit\src\DiagramToolkit\DiagramToolkit.Api\obj\Debug\DiagramToolkit.Api.csproj.CoreCompileInputs.cache
 E:\Kuliah\Semester 7\KPL\FP\ricesky\diagram-toolkit\src\DiagramToolkit\DiagramToolkit.Api\obj\Debug\DiagramToolkit.Api.dll
 E:\Kuliah\Semester 7\KPL\FP\ricesky\diagram-toolkit\src\DiagramToolkit\DiagramToolkit.Api\obj\Debug\DiagramToolkit.Api.pdb
+E:\Kuliah\Semester7\KPL\Drawing-abyan\DrawingToolkit\DiagramToolkit\DiagramToolkit.Api\bin\Debug\DiagramToolkit.Api.dll
+E:\Kuliah\Semester7\KPL\Drawing-abyan\DrawingToolkit\DiagramToolkit\DiagramToolkit.Api\bin\Debug\DiagramToolkit.Api.pdb
+E:\Kuliah\Semester7\KPL\Drawing-abyan\DrawingToolkit\DiagramToolkit\DiagramToolkit.Api\obj\Debug\DiagramToolkit.Api.csprojAssemblyReference.cache
+E:\Kuliah\Semester7\KPL\Drawing-abyan\DrawingToolkit\DiagramToolkit\DiagramToolkit.Api\obj\Debug\DiagramToolkit.Api.csproj.CoreCompileInputs.cache
+E:\Kuliah\Semester7\KPL\Drawing-abyan\DrawingToolkit\DiagramToolkit\DiagramToolkit.Api\obj\Debug\DiagramToolkit.Api.dll
+E:\Kuliah\Semester7\KPL\Drawing-abyan\DrawingToolkit\DiagramToolkit\DiagramToolkit.Api\obj\Debug\DiagramToolkit.Api.pdb

@@ -17,7 +17,7 @@ namespace DiagramToolkit.Shapes
         private int position;
         bool draw;
 
-        const double EPSILON = 3.0;
+        const double EPSILON = 12.0;
 
         public Polygon(Point startPoint, Point endPoint)
         {
@@ -40,7 +40,7 @@ namespace DiagramToolkit.Shapes
         public Polygon(Point startPoint)
         {
             this.pen = new Pen(Color.Black);
-            pen.Width = 1.5f;
+            pen.Width = 2.5f;
             polygonPoint = new List<Point>();
             polygonPoint.Add(startPoint);
 
@@ -124,34 +124,7 @@ namespace DiagramToolkit.Shapes
                     this.GetGraphics().DrawLine(pen, polygonPoint.Last(), polygonPoint.First());
                 }
             }
-            else
-            {
-                pen.Color = Color.Black;
-                pen.Width = 1.5f;
-                pen.DashStyle = DashStyle.Solid;
-
-                if (this.GetGraphics() != null)
-                {
-                    this.GetGraphics().SmoothingMode = SmoothingMode.AntiAlias;
-                    for (int i = 0; i < polygonPoint.Count - 1; i++)
-                    {
-                        Point startPoint = polygonPoint[i];
-                        Point endPoint = polygonPoint[i + 1];
-                        this.GetGraphics().DrawLine(pen, startPoint, endPoint);
-                    }
-                    this.GetGraphics().DrawLine(pen, polygonPoint.Last(), polygonPoint.First());
-
-                    pen.Color = Color.Red;
-                    pen.Width = 1.5f;
-                    pen.DashStyle = DashStyle.DashDotDot;
-
-                    this.GetGraphics().DrawLine(pen, polygonPoint[position], tempPoint);
-                    this.GetGraphics().DrawLine(pen, polygonPoint[position+1], tempPoint);
-
-                }
-
-                
-            }
+            
             
         }
 
@@ -247,20 +220,40 @@ namespace DiagramToolkit.Shapes
             return m;
         }
 
-        public override void RenderOnPolygonView(Point point)
+        public override void RenderOnPolygonView()
         {
-            pen.Color = Color.Red;
+            pen.Color = Color.Black;
             pen.Width = 1.5f;
-            pen.DashStyle = DashStyle.DashDotDot;
+            pen.DashStyle = DashStyle.Solid;
 
             if (this.GetGraphics() != null)
             {
                 this.GetGraphics().SmoothingMode = SmoothingMode.AntiAlias;
+                for (int i = 0; i < polygonPoint.Count - 1; i++)
+                {
+                    Point startPoint = polygonPoint[i];
+                    Point endPoint = polygonPoint[i + 1];
+                    this.GetGraphics().DrawLine(pen, startPoint, endPoint);
+                }
+                this.GetGraphics().DrawLine(pen, polygonPoint.Last(), polygonPoint.First());
 
-                Point startPoint = polygonPoint[position];
-                Point endPoint = polygonPoint[position+1];
-                this.GetGraphics().DrawLine(pen, startPoint, point);
-                this.GetGraphics().DrawLine(pen, point, endPoint);
+                pen.Color = Color.Red;
+                pen.Width = 1.5f;
+                pen.DashStyle = DashStyle.DashDotDot;
+
+                if(position == polygonPoint.Count)
+                {
+                    this.GetGraphics().DrawLine(pen, polygonPoint.First(), tempPoint);
+                    this.GetGraphics().DrawLine(pen, polygonPoint.Last(), tempPoint);
+                }
+                else
+                {
+                    this.GetGraphics().DrawLine(pen, polygonPoint[position], tempPoint);
+                    this.GetGraphics().DrawLine(pen, polygonPoint[position + 1], tempPoint);
+                }
+
+                
+
             }
         }
     }

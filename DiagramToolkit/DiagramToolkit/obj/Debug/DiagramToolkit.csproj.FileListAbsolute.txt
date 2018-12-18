@@ -13,3 +13,18 @@ E:\Kuliah\Semester 7\KPL\FP\ricesky\diagram-toolkit\src\DiagramToolkit\DiagramTo
 E:\Kuliah\Semester 7\KPL\FP\ricesky\diagram-toolkit\src\DiagramToolkit\DiagramToolkit\obj\Debug\DiagramToolkit.csproj.CopyComplete
 E:\Kuliah\Semester 7\KPL\FP\ricesky\diagram-toolkit\src\DiagramToolkit\DiagramToolkit\obj\Debug\DiagramToolkit.exe
 E:\Kuliah\Semester 7\KPL\FP\ricesky\diagram-toolkit\src\DiagramToolkit\DiagramToolkit\obj\Debug\DiagramToolkit.pdb
+E:\Kuliah\Semester7\KPL\Drawing-abyan\DrawingToolkit\DiagramToolkit\DiagramToolkit\bin\Debug\DiagramToolkit.exe.config
+E:\Kuliah\Semester7\KPL\Drawing-abyan\DrawingToolkit\DiagramToolkit\DiagramToolkit\bin\Debug\DiagramToolkit.exe
+E:\Kuliah\Semester7\KPL\Drawing-abyan\DrawingToolkit\DiagramToolkit\DiagramToolkit\bin\Debug\DiagramToolkit.pdb
+E:\Kuliah\Semester7\KPL\Drawing-abyan\DrawingToolkit\DiagramToolkit\DiagramToolkit\bin\Debug\DiagramToolkit.Api.dll
+E:\Kuliah\Semester7\KPL\Drawing-abyan\DrawingToolkit\DiagramToolkit\DiagramToolkit\bin\Debug\DiagramToolkit.Api.pdb
+E:\Kuliah\Semester7\KPL\Drawing-abyan\DrawingToolkit\DiagramToolkit\DiagramToolkit\obj\Debug\DiagramToolkit.csprojAssemblyReference.cache
+E:\Kuliah\Semester7\KPL\Drawing-abyan\DrawingToolkit\DiagramToolkit\DiagramToolkit\obj\Debug\DiagramToolkit.CursorSet.resources
+E:\Kuliah\Semester7\KPL\Drawing-abyan\DrawingToolkit\DiagramToolkit\DiagramToolkit\obj\Debug\DiagramToolkit.IconSet.resources
+E:\Kuliah\Semester7\KPL\Drawing-abyan\DrawingToolkit\DiagramToolkit\DiagramToolkit\obj\Debug\DiagramToolkit.MainWindow.resources
+E:\Kuliah\Semester7\KPL\Drawing-abyan\DrawingToolkit\DiagramToolkit\DiagramToolkit\obj\Debug\DiagramToolkit.Properties.Resources.resources
+E:\Kuliah\Semester7\KPL\Drawing-abyan\DrawingToolkit\DiagramToolkit\DiagramToolkit\obj\Debug\DiagramToolkit.csproj.GenerateResource.cache
+E:\Kuliah\Semester7\KPL\Drawing-abyan\DrawingToolkit\DiagramToolkit\DiagramToolkit\obj\Debug\DiagramToolkit.csproj.CoreCompileInputs.cache
+E:\Kuliah\Semester7\KPL\Drawing-abyan\DrawingToolkit\DiagramToolkit\DiagramToolkit\obj\Debug\DiagramToolkit.csproj.CopyComplete
+E:\Kuliah\Semester7\KPL\Drawing-abyan\DrawingToolkit\DiagramToolkit\DiagramToolkit\obj\Debug\DiagramToolkit.exe
+E:\Kuliah\Semester7\KPL\Drawing-abyan\DrawingToolkit\DiagramToolkit\DiagramToolkit\obj\Debug\DiagramToolkit.pdb

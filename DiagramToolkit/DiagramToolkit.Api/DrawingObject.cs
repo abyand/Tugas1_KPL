@@ -36,7 +36,7 @@ namespace DiagramToolkit
         public abstract void RenderOnPreview();
         public abstract void RenderOnEditingView();
         public abstract void RenderOnStaticView();
-        public abstract void RenderOnPolygonView(Point point);
+        public abstract void RenderOnPolygonView();
         public abstract void AddPoint(Point point, int position);
         public abstract int IsPointOnLine(Point point);
 

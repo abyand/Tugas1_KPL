@@ -58,6 +58,7 @@ namespace DiagramToolkit.Tools
                 {
                     selectedObject.ChangeState(PolygonDrawState.GetInstance());
                     position = selectedObject.IsPointOnLine(new System.Drawing.Point(e.X, e.Y));
+                    Debug.WriteLine("position " + position);
                 }
                 
             }
@@ -68,7 +69,7 @@ namespace DiagramToolkit.Tools
         {
             if (e.Button == MouseButtons.Left && canvas != null)
             {
-                if (selectedObject != null)
+                if (selectedObject != null && position != -1)
                 {
 
                     Debug.WriteLine("temp point di " + e.X);

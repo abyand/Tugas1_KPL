@@ -22,7 +22,7 @@ namespace DiagramToolkit
 
         public override void Draw(DrawingObject obj)
         {
-            obj.RenderOnPreview();
+            obj.RenderOnPolygonView();
         }
 
         public override void Deselect(DrawingObject obj)
